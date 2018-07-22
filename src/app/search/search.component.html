@@ -1,0 +1,20 @@
+<div class="container ">
+  <div class="span12">
+    <input id="searchTextInput" type="text" name="input" [(ngModel)]="searchText" placeholder="Enter Text here"
+      (ngModelChange)=searchTextChange()>
+      <br/>
+      <br/>
+      <br/>
+      <div class="row">
+        <p class="col-3">Birth Place: {{placeOfBirth}}</p>
+        <p class="col-3">DOB: {{dateOfBirth | date:'fullDate'}}</p>
+        <p class="col-3">Height: {{height}}</p>
+        <p>Spouse: 
+          <a class="col-3" (click)=searchForSpouse() href="#">{{spouse}}</a>
+        </p>
+      </div>
+      <br/>
+      <br/>
+      <br/>
+  </div>
+</div>
