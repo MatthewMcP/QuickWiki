@@ -35,6 +35,6 @@ export class SearchComponent implements OnInit {
       var tempSearchText = this.searchText.replace(/\w\S*/g, function(txt){
         return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();
       });
-      this.searchText = tempSearchText;
+      this.searchText = tempSearchText.trim();
     }
   }

@@ -8,15 +8,28 @@
 
       <div *ngFor="let human of humanResults">
         <div class="row border rounded">
-          <p class="col-3">Birth Place: {{human.BirthLocation}}</p>
-          <p class="col-3">DOB: {{human.DateOfBirth | date:'fullDate'}}</p>
-          <p class="col-3">Height: {{human.Height}}</p>
-          <p >Spouse:
-            <a class="col-3" *ngIf="human.SpouseHasWiki; else spouseName" (click)=searchForSpouse(human.SpouseName) href="#">{{human.SpouseName}}</a>
-            <ng-template #spouseName>
-                {{human.SpouseName}}
-            </ng-template>
-          </p>
+          <div class="row">
+            <h3>{{human.Title}}</h3>
+            <h3>{{human.Description}}</h3>
+          </div>
+          <div class="row">
+            <p class="col-3">Date Of Birth: {{human.DateOfBirth | date:'fullDate'}}</p>
+            <p class="col-3">Birth Place: {{human.BirthLocation}}</p>
+            <p class="col-3">Country Of Citizenship: {{human.CountryOfCitizenshipLabel}}</p>
+            <p class="col-3">Sex: {{human.Sex}}</p>
+            <p class="col-3">Residence: {{human.Residence}}</p>
+            <p class="col-3">EducatedAt: {{human.EducatedAt}}</p>
+          </div>
+          <div class="row">
+            <p class="col-3">Height: {{human.Height}}</p>
+            <img [src]="human.Image" height="42" width="42">
+            <p> Spouse:
+              <a class="col-3" *ngIf="human.SpouseHasWiki; else spouseName" (click)=searchForSpouse(human.SpouseName) href="#">{{human.SpouseName}}</a>
+              <ng-template #spouseName>
+                  {{human.SpouseName}}
+              </ng-template>
+            </p>
+          </div>
         </div>
         <br/>
       </div>
