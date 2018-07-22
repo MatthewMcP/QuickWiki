@@ -5,14 +5,19 @@
       <br/>
       <br/>
       <br/>
-      <div class="row">
-        <p class="col-3">Birth Place: {{placeOfBirth}}</p>
-        <p class="col-3">DOB: {{dateOfBirth | date:'fullDate'}}</p>
-        <p class="col-3">Height: {{height}}</p>
-        <p>Spouse: 
-          <a class="col-3" (click)=searchForSpouse() href="#">{{spouse}}</a>
+
+      <div class="row" *ngFor="let human of humanResults">
+        <br/>
+        <p class="col-3">Birth Place: {{human.BirthLocation}}</p>
+        <p class="col-3">DOB: {{human.DateOfBirth | date:'fullDate'}}</p>
+        <p class="col-3">Height: {{human.Height}}</p>
+        <p>Spouse:
+          <a class="col-3" (click)=searchForSpouse(human.SpouseName) href="#">{{human.SpouseName}}</a>
         </p>
+        <br/>
       </div>
+
+
       <br/>
       <br/>
       <br/>

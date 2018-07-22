@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
 import { WikiDataService } from '../services/wiki-data.service';
-import { Person } from '../models/person';
+import { Human } from '../models/human';
 
 @Component({
   selector: 'app-search',
@@ -11,12 +11,7 @@ import { Person } from '../models/person';
 export class SearchComponent implements OnInit {
   searchText: string = "";
 
-  firstResult: Person
-
-  placeOfBirth:string = ""
-  dateOfBirth:string = ""
-  height:string = ""
-  spouse:string = ""
+  humanResults: Human[] = [];
 
   constructor(private wikiDataService: WikiDataService) { }
 
@@ -27,20 +22,12 @@ export class SearchComponent implements OnInit {
     this.changeSearchTextToTitleCase();
     this.wikiDataService.getCelebrityData(this.searchText).subscribe(result =>
       {
-        console.log("result: "+result)
-
-        this.placeOfBirth = result.results.bindings[0].birthLocationLabel.value;
-        this.dateOfBirth = "blank"; //new Date(result.results.bindings[0].date_of_birth.value);
-        this.height = result.results.bindings[0].height.value;
-        this.spouse = result.results.bindings[0].spouseLabel.value;
-
-        //this.firstResult = Person();
-        //this.firstResult.Height = result.results.bindings[0].height.value;
+        this.humanResults = result;
       });
     }
 
-    searchForSpouse() : void {
-      this.searchText = this.spouse;
+    searchForSpouse(spouseName: string) : void {
+      this.searchText = spouseName;
       this.searchTextChange();
     }
 
@@ -50,5 +37,4 @@ export class SearchComponent implements OnInit {
       });
       this.searchText = tempSearchText;
     }
-
   }
