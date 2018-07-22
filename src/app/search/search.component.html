@@ -8,9 +8,12 @@
 
       <div *ngFor="let human of humanResults">
         <div class="row border rounded">
-          <div class="row">
-            <h3>{{human.Title}}</h3>
-            <h3>{{human.Description}}</h3>
+          <div class="col-9">
+            <p class="font-weight-bold text-left">{{human.Title}}  </p>
+            <p class="text-left">{{human.Description}}</p>
+          </div>
+          <div class="col-3">
+            <img [src]="human.Image" height="250" width="250">
           </div>
           <div class="row">
             <p class="col-3">Date Of Birth: {{human.DateOfBirth | date:'fullDate'}}</p>
@@ -22,7 +25,6 @@
           </div>
           <div class="row">
             <p class="col-3">Height: {{human.Height}}</p>
-            <img [src]="human.Image" height="42" width="42">
             <p> Spouse:
               <a class="col-3" *ngIf="human.SpouseHasWiki; else spouseName" (click)=searchForSpouse(human.SpouseName) href="#">{{human.SpouseName}}</a>
               <ng-template #spouseName>
