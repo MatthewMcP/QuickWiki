@@ -46,6 +46,7 @@ export class WikiDataService {
             humans.push(new Human(humanJson && humanJson.birthLocationLabel && humanJson.birthLocationLabel.value || "No Birth Location Info.",
                                   humanJson && humanJson.date_of_birth && humanJson.date_of_birth.value || "",
                                   humanJson && humanJson.height && humanJson.height.value || "",
+                                  humanJson && humanJson.spouse && humanJson.spouse.value || "",
                                   humanJson && humanJson.spouseLabel && humanJson.spouseLabel.value || "No Spouse Info.",
                                   humanJson && humanJson.itemLabel && humanJson.itemLabel.value || "No Title Info.",
                                   ));

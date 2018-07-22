@@ -6,17 +6,20 @@
       <br/>
       <br/>
 
-      <div class="row" *ngFor="let human of humanResults">
-        <br/>
-        <p class="col-3">Birth Place: {{human.BirthLocation}}</p>
-        <p class="col-3">DOB: {{human.DateOfBirth | date:'fullDate'}}</p>
-        <p class="col-3">Height: {{human.Height}}</p>
-        <p>Spouse:
-          <a class="col-3" (click)=searchForSpouse(human.SpouseName) href="#">{{human.SpouseName}}</a>
-        </p>
+      <div *ngFor="let human of humanResults">
+        <div class="row border rounded">
+          <p class="col-3">Birth Place: {{human.BirthLocation}}</p>
+          <p class="col-3">DOB: {{human.DateOfBirth | date:'fullDate'}}</p>
+          <p class="col-3">Height: {{human.Height}}</p>
+          <p >Spouse:
+            <a class="col-3" *ngIf="human.SpouseHasWiki; else spouseName" (click)=searchForSpouse(human.SpouseName) href="#">{{human.SpouseName}}</a>
+            <ng-template #spouseName>
+                {{human.SpouseName}}
+            </ng-template>
+          </p>
+        </div>
         <br/>
       </div>
-
 
       <br/>
       <br/>

@@ -1,3 +1,7 @@
 #searchTextInput{
   text-transform:capitalize;
 }
+
+.border{
+  border-width: 2px !important;
+}
