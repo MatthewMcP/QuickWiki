@@ -5,3 +5,7 @@
 .border{
   border-width: 2px !important;
 }
+
+img{
+  margin:10px;
+}

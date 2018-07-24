@@ -7,31 +7,36 @@
       <br/>
 
       <div *ngFor="let human of humanResults">
-        <div class="row border rounded">
+        <div class="row border rounded text-left">
           <div class="col-9">
-            <p class="font-weight-bold text-left">{{human.Title}}  </p>
-            <p class="text-left">{{human.Description}}</p>
+            <p class="col-12 font-weight-bold margin-top-10 text-left">{{human.Title}}  </p>
+            <p class="col-12 text-left">{{human.Description}}</p>
+            <div class="row">
+              <span class="col-6">Date Of Birth: {{human.DateOfBirth | date:'dd MMMM yyyy G'}}</span>
+              <p class="col-6">Birth Place: {{human.BirthLocation}}</p>
+            </div>
+            <div class="row">
+              <p class="col-4  text-left">Height: {{human.Height}}</p>
+              <p class="col-4 text-capitalize">Sex: {{human.Sex}}</p>
+              <p> Spouse:
+                <a class="col-4" *ngIf="human.SpouseHasWiki; else spouseName" (click)=searchForSpouse(human.SpouseName) href="#">{{human.SpouseName}}</a>
+                <ng-template #spouseName>
+                    {{human.SpouseName}}
+                </ng-template>
+              </p>
+            </div>
           </div>
           <div class="col-3">
             <img [src]="human.Image" height="250" width="250">
           </div>
           <div class="row">
-            <p class="col-3">Date Of Birth: {{human.DateOfBirth | date:'fullDate'}}</p>
-            <p class="col-3">Birth Place: {{human.BirthLocation}}</p>
-            <p class="col-3">Country Of Citizenship: {{human.CountryOfCitizenshipLabel}}</p>
-            <p class="col-3">Sex: {{human.Sex}}</p>
-            <p class="col-3">Residence: {{human.Residence}}</p>
-            <p class="col-3">EducatedAt: {{human.EducatedAt}}</p>
           </div>
           <div class="row">
-            <p class="col-3">Height: {{human.Height}}</p>
-            <p> Spouse:
-              <a class="col-3" *ngIf="human.SpouseHasWiki; else spouseName" (click)=searchForSpouse(human.SpouseName) href="#">{{human.SpouseName}}</a>
-              <ng-template #spouseName>
-                  {{human.SpouseName}}
-              </ng-template>
-            </p>
+            <p class="col-4">Country Of Citizenship: {{human.CountryOfCitizenshipLabel}}</p>
+            <p class="col-4">Residence: {{human.Residence}}</p>
+            <p class="col-4">EducatedAt: {{human.EducatedAt}}</p>
           </div>
+
         </div>
         <br/>
       </div>
