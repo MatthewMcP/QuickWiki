@@ -1,44 +1,46 @@
-<div class="container ">
+<div class="container">
   <div class="span12">
     <input id="searchTextInput" type="text" name="input" [(ngModel)]="searchText" placeholder="Enter Text here"
       (ngModelChange)=searchTextChange()>
       <br/>
       <br/>
-      <br/>
 
       <div *ngFor="let human of humanResults">
-        <div class="row border rounded text-left">
+        <div class="row result-border text-left">
           <div class="col-9">
-            <p class="col-12 font-weight-bold margin-top-10 text-left">{{human.Title}}  </p>
-            <p class="col-12 text-left">{{human.Description}}</p>
-            <div class="row">
-              <span class="col-6">Date Of Birth: {{human.DateOfBirth | date:'dd MMMM yyyy G'}}</span>
-              <p class="col-6">Birth Place: {{human.BirthLocation}}</p>
+            <label class="col-12 font-weight-bold margin-top-sm margin-bottom-0">{{human.Title}}</label>
+            <label class="col-12">{{human.Description}}</label>
+            <div>
+              <label class="col-6">Date Of Birth: {{human.DateOfBirth | date:'dd MMMM yyyy G'}}</label>
+              <label class="col-6 text-capitalize">Sex: {{human.Sex}}</label>
             </div>
-            <div class="row">
-              <p class="col-4  text-left">Height: {{human.Height}}</p>
-              <p class="col-4 text-capitalize">Sex: {{human.Sex}}</p>
+            <div>
+              <label class="col-6">Birth Place: {{human.BirthLocation}}</label>
+              <label class="col-6">Country Of Citizenship: {{human.CountryOfCitizenshipLabel}}</label>
+            </div>
+            <div>
+              <label class="col-12 text-left">Height: {{human.Height}}</label>
               <p> Spouse:
-                <a class="col-4" *ngIf="human.SpouseHasWiki; else spouseName" (click)=searchForSpouse(human.SpouseName) href="#">{{human.SpouseName}}</a>
+                <a class="col-12" *ngIf="human.SpouseHasWiki; else spouseName" (click)=searchForSpouse(human.SpouseName) href="#">{{human.SpouseName}}</a>
                 <ng-template #spouseName>
                     {{human.SpouseName}}
                 </ng-template>
               </p>
+              <label class="col-12">Residence: {{human.ResidenceLabel}}</label>
+              <label class="col-12">Educated At: {{human.EducatedAtLabel}}</label>
             </div>
           </div>
+
           <div class="col-3">
             <img [src]="human.Image" height="250" width="250">
           </div>
+          <br/>
           <div class="row">
-          </div>
-          <div class="row">
-            <p class="col-4">Country Of Citizenship: {{human.CountryOfCitizenshipLabel}}</p>
-            <p class="col-4">Residence: {{human.Residence}}</p>
-            <p class="col-4">EducatedAt: {{human.EducatedAt}}</p>
           </div>
 
         </div>
         <br/>
+
       </div>
 
       <br/>

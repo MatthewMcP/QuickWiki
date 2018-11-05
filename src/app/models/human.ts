@@ -13,8 +13,10 @@ export class Human {
             spouse:string,
             spouseLabel:string,
             itemLabel:string,
+            educatedAt:string,
+            educatedAtLabel:string,
             residence:string,
-            educatedAt:string) {
+            residenceLabel:string) {
               this.BirthLocation = birthLocationLabel;
               this.CountryOfCitizenship = country_of_citizenship;
               this.CountryOfCitizenshipLabel = country_of_citizenshipLabel;
@@ -40,8 +42,10 @@ export class Human {
               this.Sex = sex_or_genderLabel;
               this.SpouseName = spouseLabel;
               this.Title = itemLabel;
-              this.Residence = residence;
               this.EducatedAt = educatedAt;
+              this.EducatedAtLabel = educatedAtLabel;
+              this.Residence = residence;
+              this.ResidenceLabel = residenceLabel;
   }
 
   BirthLocation: string;
@@ -57,5 +61,7 @@ export class Human {
   SpouseName: string;
   Title: string;
   EducatedAt: string;
+  EducatedAtLabel: string;
   Residence: string;
+  ResidenceLabel: string;
 }

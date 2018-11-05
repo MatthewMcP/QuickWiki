@@ -21,7 +21,7 @@ export class WikiDataService {
   getCelebrityData( searchTerm: string): Observable<Human[]> {
     console.log("getCelebrityData: " + searchTerm);
 
-    var myQuery = "SELECT DISTINCT ?item ?itemLabel ?itemDescription ?residence ?educated_at ?birthLocation ?birthLocationLabel ?date_of_birth ?height ?spouse ?spouseLabel ?IMDb_ID ?sex_or_gender ?sex_or_genderLabel ?country_of_citizenship ?country_of_citizenshipLabel ?image ?title WHERE {\n" +
+    var myQuery = "SELECT DISTINCT ?item ?itemLabel ?itemDescription ?residence ?residenceLabel ?educated_at ?educated_atLabel ?birthLocation ?birthLocationLabel ?date_of_birth ?height ?spouse ?spouseLabel ?IMDb_ID ?sex_or_gender ?sex_or_genderLabel ?country_of_citizenship ?country_of_citizenshipLabel ?image ?title WHERE {\n" +
         "  ?item rdfs:label \""+ searchTerm +"\"@en.\n" +
         "  ?item wdt:P19 ?birthLocation.\n" +
         "  SERVICE wikibase:label { bd:serviceParam wikibase:language \"en\". }\n" +
@@ -54,8 +54,8 @@ export class WikiDataService {
                                   humanJson && humanJson.country_of_citizenship && humanJson.country_of_citizenship.value || "",
                                   humanJson && humanJson.country_of_citizenshipLabel && humanJson.country_of_citizenshipLabel.value || "",
                                   humanJson && humanJson.date_of_birth && humanJson.date_of_birth.value || "",
-                                  humanJson && humanJson.itemDescription && humanJson.itemDescription.value || "",
-                                  humanJson && humanJson.height && humanJson.height.value || "",
+                                  humanJson && humanJson.itemDescription && humanJson.itemDescription.value || "Not Found",
+                                  humanJson && humanJson.height && humanJson.height.value || "Not Found",
                                   humanJson && humanJson.image && humanJson.image.value || "",
                                   humanJson && humanJson.IMDb_ID && humanJson.IMDb_ID.value || "",
                                   humanJson && humanJson.sex_or_genderLabel && humanJson.sex_or_genderLabel.value || "",
@@ -63,7 +63,9 @@ export class WikiDataService {
                                   humanJson && humanJson.spouseLabel && humanJson.spouseLabel.value || "No Spouse Info.",
                                   humanJson && humanJson.itemLabel && humanJson.itemLabel.value || "No Title Info.",
                                   humanJson && humanJson.educated_at && humanJson.educated_at.value || "",
+                                  humanJson && humanJson.educated_atLabel && humanJson.educated_atLabel.value || "Not Found",
                                   humanJson && humanJson.residence && humanJson.residence.value || "",
+                                  humanJson && humanJson.residenceLabel && humanJson.residenceLabel.value || "",
                                   ));
         }
 

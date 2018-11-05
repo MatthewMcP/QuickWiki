@@ -1,9 +1,23 @@
 #searchTextInput{
   text-transform:capitalize;
+  margin-top: 10px;
+  text-align: center;
 }
 
-.border{
+.result-border{
   border-width: 2px !important;
+  border-radius: 1em;
+  border-style: solid;
+  border-color: grey;
+  padding: 5px;
+}
+
+label {
+  padding-left: 0;
+}
+
+.margin-bottom-0{
+  margin-bottom: 0;
 }
 
 img{
