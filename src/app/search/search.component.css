@@ -21,5 +21,8 @@ label {
 }
 
 img{
-  margin:10px;
+  max-width: 250px;
+  margin: 5px;
+  height: auto;
+  width: auto;
 }
