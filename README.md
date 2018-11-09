@@ -7,7 +7,7 @@ Quick Project to get data from Wikipedia's Database. More of a Proof of concept 
 
 Notable Technologies:
   -Angular
-  -Azure Hosting
+  -AWS Hosting
   -Rest API (Wikipedia's API)
   -SPARQL (Query language to access Wikipedia's DB. Similar to SQL)
   -Basic website building tech (CSS/Bootstrap etc etc)
