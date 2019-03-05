@@ -13,14 +13,13 @@ const httpOptions = {
 @Injectable({
   providedIn: 'root'
 })
+
 export class WikiDataService {
   private wikiDataQueryUrl: string = "https://query.wikidata.org/sparql"
-
   constructor(private httpClient: HttpClient) { }
 
   getCelebrityData( searchTerm: string): Observable<Human[]> {
-    console.log("getCelebrityData: " + searchTerm);
-
+    //console.log("getCelebrityData: " + searchTerm);
     var myQuery = "SELECT DISTINCT ?item ?itemLabel ?itemDescription ?residence ?residenceLabel ?educated_at ?educated_atLabel ?birthLocation ?birthLocationLabel ?date_of_birth ?height ?spouse ?spouseLabel ?IMDb_ID ?sex_or_gender ?sex_or_genderLabel ?country_of_citizenship ?country_of_citizenshipLabel ?image ?title WHERE {\n" +
         "  ?item rdfs:label \""+ searchTerm +"\"@en.\n" +
         "  ?item wdt:P19 ?birthLocation.\n" +
@@ -49,8 +48,11 @@ export class WikiDataService {
        {
          var humans : Human[] = [];
          var jsonData =JSON.parse(JSON.stringify(data));
-         for (let humanJson of jsonData.results.bindings) {
-            humans.push(new Human(humanJson && humanJson.birthLocationLabel && humanJson.birthLocationLabel.value || "No Birth Location Info.",
+
+        for (let humanJson of jsonData.results.bindings) {
+            humans.push(new Human(
+                                  humanJson && humanJson.item && humanJson.item.value || "No item.",
+                                  humanJson && humanJson.birthLocationLabel && humanJson.birthLocationLabel.value || "No Birth Location Info.",
                                   humanJson && humanJson.country_of_citizenship && humanJson.country_of_citizenship.value || "",
                                   humanJson && humanJson.country_of_citizenshipLabel && humanJson.country_of_citizenshipLabel.value || "",
                                   humanJson && humanJson.date_of_birth && humanJson.date_of_birth.value || "",
@@ -63,16 +65,20 @@ export class WikiDataService {
                                   humanJson && humanJson.spouseLabel && humanJson.spouseLabel.value || "No Spouse Info.",
                                   humanJson && humanJson.itemLabel && humanJson.itemLabel.value || "No Title Info.",
                                   humanJson && humanJson.educated_at && humanJson.educated_at.value || "",
-                                  humanJson && humanJson.educated_atLabel && humanJson.educated_atLabel.value || "Not Found",
+                                  humanJson && humanJson.educated_atLabel && humanJson.educated_atLabel.value || "Not Education Information.",
                                   humanJson && humanJson.residence && humanJson.residence.value || "",
-                                  humanJson && humanJson.residenceLabel && humanJson.residenceLabel.value || "",
+                                  humanJson && humanJson.residenceLabel && humanJson.residenceLabel.value || "No Residence Information.",
                                   ));
         }
 
-         return humans;
+         var humanSet = Array.from(new Set(humans ));
+         return humanSet;
        }),
        catchError(this.handleServerError)
      );
+
+
+
    }
 
   private handleServerError(error:any)

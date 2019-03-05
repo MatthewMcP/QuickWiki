@@ -1,6 +1,7 @@
 export class Human {
 
   constructor(
+            itemReF: string,
             birthLocationLabel: string,
             country_of_citizenship: string,
             country_of_citizenshipLabel: string,
@@ -17,6 +18,7 @@ export class Human {
             educatedAtLabel:string,
             residence:string,
             residenceLabel:string) {
+              this.ItemReF = itemReF;
               this.BirthLocation = birthLocationLabel;
               this.CountryOfCitizenship = country_of_citizenship;
               this.CountryOfCitizenshipLabel = country_of_citizenshipLabel;
@@ -31,7 +33,6 @@ export class Human {
               }
               this.Image = image;
               this.IMDB_Id = IMDb_ID;
-
               if(spouse != null && spouse.length >0)
               {
                 this.SpouseHasWiki = true;
@@ -48,6 +49,7 @@ export class Human {
               this.ResidenceLabel = residenceLabel;
   }
 
+  ItemReF: string;
   BirthLocation: string;
   CountryOfCitizenship: string;
   CountryOfCitizenshipLabel: string;
