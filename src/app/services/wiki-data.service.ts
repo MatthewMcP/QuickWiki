@@ -76,9 +76,6 @@ export class WikiDataService {
        }),
        catchError(this.handleServerError)
      );
-
-
-
    }
 
   private handleServerError(error:any)

@@ -20,10 +20,13 @@
             <div>
               <label class="col-12 text-left">Height: {{human.Height}}</label>
               <p> Spouse:
-                <a class="col-12" *ngIf="human.SpouseHasWiki; else spouseName" (click)=searchForSpouse(human.SpouseName) href="#">{{human.SpouseName}}</a>
-                <ng-template #spouseName>
-                    {{human.SpouseName}}
-                </ng-template>
+                <label *ngFor="let spouse of human.Spouse;">
+                  <a class="col-12" *ngIf="spouse.HasLink; else spouseName" (click)=searchForSpouse(spouse.Label) href="#">{{spouse.Label}}</a>
+                  <ng-template #spouseName>
+                      {{spouse.Label}}
+                  </ng-template>
+                </label>
+
               </p>
               <label class="col-12">Residence: {{human.ResidenceLabel}}</label>
               <label class="col-12">Educated At: {{human.EducatedAtLabel}}</label>

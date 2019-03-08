@@ -1,4 +1,24 @@
+
+import { LabelAndLink } from '../models/labelAndLink';
+
 export class Human {
+
+    ItemReF: string;
+    BirthLocation: string;
+    CountryOfCitizenship: string;
+    CountryOfCitizenshipLabel: string;
+    DateOfBirth?: Date;
+    Description: string;
+    Height?: number;
+    Image: string;
+    IMDB_Id: string;
+    Sex: string;
+    Spouse: LabelAndLink[] = [];
+    Title: string;
+    EducatedAt: string;
+    EducatedAtLabel: string;
+    Residence: string;
+    ResidenceLabel: string;
 
   constructor(
             itemReF: string,
@@ -35,35 +55,16 @@ export class Human {
               this.IMDB_Id = IMDb_ID;
               if(spouse != null && spouse.length >0)
               {
-                this.SpouseHasWiki = true;
+                this.Spouse.push(new LabelAndLink(spouseLabel, true) );
               }
               else{
-                this.SpouseHasWiki = false;
+                this.Spouse.push(new LabelAndLink(spouseLabel, false));
               }
               this.Sex = sex_or_genderLabel;
-              this.SpouseName = spouseLabel;
               this.Title = itemLabel;
               this.EducatedAt = educatedAt;
               this.EducatedAtLabel = educatedAtLabel;
               this.Residence = residence;
               this.ResidenceLabel = residenceLabel;
   }
-
-  ItemReF: string;
-  BirthLocation: string;
-  CountryOfCitizenship: string;
-  CountryOfCitizenshipLabel: string;
-  DateOfBirth?: Date;
-  Description: string;
-  Height?: number;
-  Image: string;
-  IMDB_Id: string;
-  Sex: string;
-  SpouseHasWiki: boolean;
-  SpouseName: string;
-  Title: string;
-  EducatedAt: string;
-  EducatedAtLabel: string;
-  Residence: string;
-  ResidenceLabel: string;
 }

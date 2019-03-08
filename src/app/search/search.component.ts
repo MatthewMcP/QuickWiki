@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { WikiDataService } from '../services/wiki-data.service';
 import { Human } from '../models/human';
+import { LabelAndLink } from '../models/labelAndLink';
 
 @Component({
   selector: 'app-search',
