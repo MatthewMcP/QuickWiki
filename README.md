@@ -3,7 +3,7 @@
 
 # QuickWiki
 
-Quick Project to get data from Wikipedia's Database. More of a Proof of concept than a finished website.
+A small Project to get data from Wikipedia's Database. Still A WIP.
 
 Notable Technologies:
   -Angular
@@ -13,4 +13,4 @@ Notable Technologies:
   -Basic website building tech (CSS/Bootstrap etc etc)
 
 
-http://matthewmcparlandquickwiki.s3-website-ap-southeast-2.amazonaws.com/
+http://quickiwikimatthewmcp.s3-website-eu-west-1.amazonaws.com/
