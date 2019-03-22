@@ -20,20 +20,16 @@ export class WikiDataService {
 
   getCelebrityData( searchTerm: string): Observable<Human[]> {
     //console.log("getCelebrityData: " + searchTerm);
-    var myQuery = "SELECT DISTINCT ?item ?itemLabel ?itemDescription ?residence ?residenceLabel ?educated_at ?educated_atLabel ?birthLocation ?birthLocationLabel ?date_of_birth ?height ?spouse ?spouseLabel ?IMDb_ID ?sex_or_gender ?sex_or_genderLabel ?country_of_citizenship ?country_of_citizenshipLabel ?image ?title WHERE {\n" +
+    var myQuery = "SELECT DISTINCT ?item ?itemLabel ?itemDescription ?birthLocation ?birthLocationLabel ?date_of_birth ?height?IMDb_ID ?sex_or_gender ?sex_or_genderLabel ?image ?title WHERE {\n" +
         "  ?item rdfs:label \""+ searchTerm +"\"@en.\n" +
         "  ?item wdt:P19 ?birthLocation.\n" +
-        "  SERVICE wikibase:label { bd:serviceParam wikibase:language \"en\". }\n" +
+        "  SERVICE wikibase:label { bd:serviceParam wikibase:language \"[AUTO_LANGUAGE],en\". }\n" +
         "  OPTIONAL { ?item wdt:P569 ?date_of_birth. }\n" +
         "  OPTIONAL { ?item wdt:P2048 ?height. }\n" +
-        "  OPTIONAL { ?item wdt:P26 ?spouse. }\n" +
         "  OPTIONAL { ?item wdt:P345 ?IMDb_ID. }\n" +
         "  OPTIONAL { ?item wdt:P21 ?sex_or_gender. }\n" +
-        "  OPTIONAL { ?item wdt:P27 ?country_of_citizenship. }\n" +
         "  OPTIONAL { ?item wdt:P18 ?image. }\n" +
         "  OPTIONAL { ?item wdt:P1476 ?title. }\n" +
-        "  OPTIONAL { ?item wdt:P551 ?residence. }\n" +
-        "  OPTIONAL { ?item wdt:P69 ?educated_at. }\n" +
         "  ?item wdt:P31 wd:Q5.\n" +
         "}\n" +
         "  ORDER BY ASC(?date_of_birth)";
